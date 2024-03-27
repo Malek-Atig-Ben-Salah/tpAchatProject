@@ -10,12 +10,12 @@ pipeline {
         }
         stage('UNIT TESTS') {
             steps {
-                sh 'java -version'
+                sh 'mvn test'
             }
         }
         stage('MAVEN BUILD') {
             steps {
-                sh 'mvn -version'
+                sh 'mvn clean install'
             }
         }
     }
