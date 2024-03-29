@@ -62,7 +62,7 @@ public class CategorieProduitServiceImplTest {
     @Test
     void updateCategorieProduitTest(){
         Mockito.when(categorieProduitRepository.save(categorieProduit1)).thenReturn(categorieProduit1);
-        CategorieProduit categorieProduit = categorieProduitService.addCategorieProduit(categorieProduit1);
+        CategorieProduit categorieProduit = categorieProduitService.updateCategorieProduit(categorieProduit1);
         Assertions.assertEquals(categorieProduit , categorieProduit1);
     }
     @Test

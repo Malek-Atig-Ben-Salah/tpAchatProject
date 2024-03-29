@@ -1,4 +1,3 @@
-
 package com.esprit.examen.services;
 
 import com.esprit.examen.entities.Fournisseur;
@@ -43,32 +42,32 @@ public class ProduitServiceImplTest {
         produitSet = new HashSet<>();
         produitSet.add(produit);
     }
-    @Test
-    void retrieveAllProduits (){
-        Mockito.when(produitRepository.findAll()).thenReturn(produits);
-        List<Produit> produitList = produitService.retrieveAllProduits();
-        Assertions.assertEquals(produitList.size() , produits.size());
-        Assertions.assertNotEquals(produitList, new ArrayList<>() , "empty list");
+        @Test
+        void retrieveAllProduits (){
+            Mockito.when(produitRepository.findAll()).thenReturn(produits);
+            List<Produit> produitList = produitService.retrieveAllProduits();
+            Assertions.assertEquals(produitList.size() , produits.size());
+            Assertions.assertNotEquals(produitList, new ArrayList<>() , "empty list");
 
-    }
+        }
 
-    void addProduit(){
-        Mockito.when(produitRepository.save(produit)).thenReturn(produit);
-        Produit produit1 = produitService.addProduit(produit);
-        Assertions.assertEquals(produits , produit1);
+        void addProduit(){
+            Mockito.when(produitRepository.save(produit)).thenReturn(produit);
+            Produit produit1 = produitService.addProduit(produit);
+            Assertions.assertEquals(produits , produit1);
+        }
+        void deleteProduit(){
+            produitService.deleteProduit(1L);
+            Mockito.verify(produitRepository , Mockito.times(1)).deleteById(1L);
+        }
+        void updateProduit(){
+            Mockito.when(produitRepository.save(produit)).thenReturn(produit);
+            Produit produit1 = produitService.updateProduit(produit);
+            Assertions.assertEquals(produit , produit1);
+        }
+        void retrieveProduit(){
+            Mockito.when(produitRepository.findById(1L)).thenReturn(Optional.ofNullable(produit));
+            Produit produit1 = produitService.retrieveProduit(1L);
+            Assertions.assertEquals(produit , produit1);
+        }
     }
-    void deleteProduit(){
-        produitService.deleteProduit(1L);
-        Mockito.verify(produitRepository , Mockito.times(1)).deleteById(1L);
-    }
-    void updateProduit(){
-        Mockito.when(produitRepository.save(produit)).thenReturn(produit);
-        Produit produit1 = produitService.updateProduit(produit);
-        Assertions.assertEquals(produit , produit1);
-    }
-    void retrieveProduit(){
-        Mockito.when(produitRepository.findById(1L)).thenReturn(Optional.ofNullable(produit));
-        Produit produit1 = produitService.retrieveProduit(1L);
-        Assertions.assertEquals(produit , produit1);
-    }
-}
