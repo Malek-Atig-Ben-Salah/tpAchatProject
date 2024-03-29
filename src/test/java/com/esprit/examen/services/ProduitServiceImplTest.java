@@ -71,4 +71,3 @@ public class ProduitServiceImplTest {
             Assertions.assertEquals(produit , produit1);
         }
     }
-

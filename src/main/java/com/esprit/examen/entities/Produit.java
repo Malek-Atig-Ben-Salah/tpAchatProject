@@ -47,9 +47,69 @@ public class Produit implements Serializable {
 	@ManyToOne
 	@JsonIgnore
 	private CategorieProduit categorieProduit;
-	
+
+	public Set<DetailFacture> getDetailFacture() {
+		return detailFacture;
+	}
+
+	public void setDetailFacture(Set<DetailFacture> detailFacture) {
+		this.detailFacture = detailFacture;
+	}
+
+	public void setStock(Stock stock) {
+		this.stock = stock;
+	}
+
+	public void setIdProduit(long idProduit) {
+		this.idProduit = idProduit;
+	}
+
+	public void setDateDerniereModification(Date date) {
+		this.dateDerniereModification = date;
+	}
+
+	public void setDateCreation(Date date) {
+		this.dateCreation =date;
+	}
+
+	public void setCategorieProduit(CategorieProduit categorieProduit) {
+		this.categorieProduit = categorieProduit;
+	}
+
+	public CategorieProduit getCategorieProduit() {
+		return categorieProduit;
+	}
+
+	public String getCodeProduit() {
+		return codeProduit;
+	}
+
+	public String getLibelleProduit() {
+		return libelleProduit;
+	}
 
 
-	
 
+	public void setCodeProduit(String codeProduit) {
+		this.codeProduit = codeProduit;
+	}
+
+
+
+	public void setLibelleProduit(String libelleProduit) {
+		this.libelleProduit =libelleProduit;
+	}
+
+	public void setPrix(float prix) {
+		this.prix = prix;
+	}
+
+
+	public Object getDateCreation() {
+		return this.dateCreation;
+	}
+
+	public Object getDateDerniereModification() {
+		return  this.dateDerniereModification;
+	}
 }
