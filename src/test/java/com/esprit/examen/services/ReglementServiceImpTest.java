@@ -19,9 +19,11 @@ import java.util.*;
 public class ReglementServiceImpTest {
     @InjectMocks
     ReglementServiceImpl reglementServiceImp ;
+    @InjectMocks
     private  StockServiceImpl stockService ;
     @Mock
     ReglementRepository reglementRepository  ;
+    @Mock
     private StockRepository stockRepository ;
 
     private List<Reglement> reglements;

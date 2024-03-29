@@ -22,7 +22,7 @@ public class OperateurServiceImplTest {
     @Mock
     OperateurRepository operateurRepository;
     Operateur operateur;
-    Set<Facture> factures;
+    Set<Facture> factures = new HashSet<>();
 
     @BeforeEach
     void setuP(){
@@ -37,9 +37,9 @@ public class OperateurServiceImplTest {
     }
     @Test
     void testGettersAndSetters() {
-        Assertions.assertEquals("ABC123", operateur.getIdOperateur());
-        Assertions.assertEquals("Test", operateur.getNom());
-        Assertions.assertEquals("Test", operateur.getPrenom());
+        Assertions.assertEquals(1L, operateur.getIdOperateur());
+        Assertions.assertEquals("ABC123", operateur.getNom());
+        Assertions.assertEquals("Test Produit", operateur.getPrenom());
         Assertions.assertNotNull(operateur.getPassword());
         Assertions.assertNotNull(operateur.getFactures());
     }
