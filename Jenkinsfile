@@ -10,6 +10,7 @@ pipeline {
         }
         stage('MAVEN BUILD') {
             steps {
+                echo 'java -version'
                 sh 'mvn clean install'
             }
         }
