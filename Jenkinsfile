@@ -14,13 +14,6 @@ pipeline {
             }
         }
         stage('SONAR') {
-            tools {
-                jdk "jdk17" // the name you have given the JDK installation using the JDK manager (Global Tool Configuration)
-            }
-            environment {
-                scannerHome = tool 'SonarQube Scanner'
-                // the name you have given the Sonar Scanner (Global Tool Configuration)
-            }
                 steps {
                 withSonarQubeEnv(installationName : 'tpAchatSonar'){
                     sh 'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
