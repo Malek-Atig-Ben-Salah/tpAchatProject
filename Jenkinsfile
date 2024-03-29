@@ -17,7 +17,7 @@ pipeline {
         stage('SONAR') {
                 steps {
                 withSonarQubeEnv(installationName : 'tpAchatSonar'){
-                    sh 'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:sonar'
+                    sh 'mvn clean sonar:sonar'
                 }
             }
         }
