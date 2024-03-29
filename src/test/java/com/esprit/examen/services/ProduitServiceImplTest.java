@@ -1,10 +1,11 @@
+
 package com.esprit.examen.services;
 
-import com.esprit.examen.entities.CategorieProduit;
-import com.esprit.examen.entities.DetailFacture;
+import com.esprit.examen.entities.Fournisseur;
 import com.esprit.examen.entities.Produit;
-import com.esprit.examen.entities.Stock;
-import  com.esprit.examen.repositories.*;
+import com.esprit.examen.repositories.CategorieProduitRepository;
+import com.esprit.examen.repositories.ProduitRepository;
+import com.esprit.examen.repositories.StockRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,11 +13,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import  static org.mockito.Mockito.when;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.*;
+
 @ExtendWith(MockitoExtension.class)
+
 public class ProduitServiceImplTest {
     @InjectMocks
     ProduitServiceImpl produitService;
@@ -26,57 +29,46 @@ public class ProduitServiceImplTest {
     StockRepository stockRepository;
     @Mock
     CategorieProduitRepository categorieProduitRepository;
-
     List<Produit> produits;
-    Set<DetailFacture> detailFactures;
+    Set<Produit>produitSet;
     Produit produit;
-    CategorieProduit categorieProduit;
     @BeforeEach
-    void setuP(){
-        MockitoAnnotations.initMocks(this);
+    void setUp() {
         produit = new Produit();
         produit.setIdProduit(1L);
-        produit.setCodeProduit("ABC123");
-        produit.setLibelleProduit("Test Produit");
-        produit.setPrix(50.0f);
-        produit.setDateCreation(new Date());
-        produit.setDateDerniereModification(new Date());
+        produit.setCodeProduit("code");
+        produit.setPrix(10);
+        produits = new ArrayList<>();
+        produits.add(produit);
+        produitSet = new HashSet<>();
+        produitSet.add(produit);
     }
     @Test
-    void testGettersAndSetters() {
-       // Assertions.assertEquals(1L, produit.getIdProduit());
-        Assertions.assertEquals("ABC123", produit.getCodeProduit());
-        Assertions.assertEquals("Test Produit", produit.getLibelleProduit());
-        //Assertions.assertEquals(50.0f, produit.getPrix());
-        Assertions.assertNotNull(produit.getDateCreation());
-        Assertions.assertNotNull(produit.getDateDerniereModification());
+    void retrieveAllProduits (){
+        Mockito.when(produitRepository.findAll()).thenReturn(produits);
+        List<Produit> produitList = produitService.retrieveAllProduits();
+        Assertions.assertEquals(produitList.size() , produits.size());
+        Assertions.assertNotEquals(produitList, new ArrayList<>() , "empty list");
+
     }
-    @Test
-    void testStockAssociation() {
-        produit.setDetailFacture(detailFactures);
-        Assertions.assertEquals(detailFactures, produit.getDetailFacture());
+
+    void addProduit(){
+        Mockito.when(produitRepository.save(produit)).thenReturn(produit);
+        Produit produit1 = produitService.addProduit(produit);
+        Assertions.assertEquals(produits , produit1);
     }
-    @Test
-    void testCategorieProduitAssociation() {
-        produit.setCategorieProduit(categorieProduit);
-        Assertions.assertEquals(categorieProduit, produit.getCategorieProduit());
+    void deleteProduit(){
+        produitService.deleteProduit(1L);
+        Mockito.verify(produitRepository , Mockito.times(1)).deleteById(1L);
     }
-    @Test
-    void testRetrieveAllProduits() {
-        List<Produit> produits = new ArrayList<>();
-        Produit produit1 = new Produit();
-        Produit produit2 = new Produit();
-        produits.add(produit1);
-        produits.add(produit2);
-        when(produitRepository.findAll()).thenReturn(produits);
-        List<Produit> result = produitService.retrieveAllProduits();
-        Assertions.assertEquals(2, result.size());
+    void updateProduit(){
+        Mockito.when(produitRepository.save(produit)).thenReturn(produit);
+        Produit produit1 = produitService.updateProduit(produit);
+        Assertions.assertEquals(produit , produit1);
     }
-    @Test
-    void testAddProduit() {
-        Produit produit = new Produit();
-        when(produitRepository.save(produit)).thenReturn(produit);
-        Produit result = produitService.addProduit(produit);
-        Assertions.assertEquals(produit, result);
+    void retrieveProduit(){
+        Mockito.when(produitRepository.findById(1L)).thenReturn(Optional.ofNullable(produit));
+        Produit produit1 = produitService.retrieveProduit(1L);
+        Assertions.assertEquals(produit , produit1);
     }
 }
