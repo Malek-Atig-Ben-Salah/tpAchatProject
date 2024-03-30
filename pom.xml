@@ -21,6 +21,7 @@
 		<sonar.sources>src/main</sonar.sources>
 		<sonar.language>java</sonar.language>
 		<sonar.host.url>http://192.168.33.10:9000/</sonar.host.url>
+		<sonar.java.binaries>src/main/resources</sonar.java.binaries>
 	</properties>
 	<dependencies>
 		<dependency>
