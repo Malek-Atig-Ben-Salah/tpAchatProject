@@ -17,7 +17,7 @@ pipeline {
         stage('SONAR') {
                 steps {
                 withSonarQubeEnv(installationName : 'tpAchatSonar'){
-                    sh 'mvn clean sonar:sonar'
+                    sh 'mvn clean sonar:sonar -Dsonar.sources=src/main/java/ -Dsonar.java.binaries=target/classes'
                 }
             }
         }
