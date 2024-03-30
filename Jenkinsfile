@@ -5,7 +5,23 @@ pipeline {
     stages {
         stage('GIT CHECKOUT') {
             steps {
+                script {
+                    def currentDate = currentBuild.getTimestamp()
+                    def formattedDate = currentDate.format("yyyy-MM-dd HH:mm:ss")
+                    echo "Formatted Date: ${formattedDate}"
+                }
                 git branch: 'master', url: 'https://github.com/Malek-Atig-Ben-Salah/tpAchatProject.git'
+            }
+        }
+        stage('UNIT TESTS') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('MAVEN BUILD') {
+            steps {
+                echo 'java -version'
+                sh 'mvn clean install'
             }
         }
         stage('SONARQUBE ANALYSIS') {
