@@ -6,9 +6,8 @@ pipeline {
         stage('Display Date') {
             steps {
                 script {
-                    def currentDate = currentBuild.getTimestamp()
-                    def formattedDate = currentDate.format("yyyy-MM-dd HH:mm:ss")
-                    echo "Formatted Date: ${formattedDate}"
+                    def currentDate = sh(script: 'date', returnStdout: true).trim()
+                    echo "Current Date: ${currentDate}"
                 }
             }
         }
