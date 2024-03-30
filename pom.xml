@@ -22,7 +22,6 @@
 		<sonar.language>java</sonar.language>
 		<sonar.host.url>http://192.168.33.10:9000/</sonar.host.url>
 		<sonar.java.binaries>target/classes</sonar.java.binaries>
-		<sonar.exclusions>**/test/*</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
