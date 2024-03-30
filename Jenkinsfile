@@ -17,7 +17,7 @@ pipeline {
         stage('SONAR') {
                 steps {
                 withSonarQubeEnv(installationName : 'tpAchatSonar'){
-                    sh 'mvn clean deploy sonar:sonar'
+                    sh 'mvn clean sonar:sonar'
                 }
             }
         }
