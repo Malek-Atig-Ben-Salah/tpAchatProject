@@ -19,7 +19,7 @@
 		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
 		<sonar.tests>src/test</sonar.tests>
 		<sonar.sources>src/main</sonar.sources>
-		<sonar.java.binaries>target/classes</sonar.java.binaries>
+		<sonar.java.binaries>path/to/compiled/classes</sonar.java.binaries>
 		<sonar.exclusions>**/test/*</sonar.exclusions>
 		<sonar.exclusions>**/*.class</sonar.exclusions>
 	</properties>
