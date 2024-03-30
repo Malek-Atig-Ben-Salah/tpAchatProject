@@ -16,8 +16,11 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
-		<sonar.java.binaries>path/to/compiled/classes</sonar.java.binaries>
-<!--		<sonar.exclusions>**/*.java</sonar.exclusions>-->
+		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+		<sonar.tests>src/test</sonar.tests>
+		<sonar.sources>src/main</sonar.sources>
+		<sonar.java.binaries>target/classes</sonar.java.binaries>
+		<sonar.exclusions>**/test/*</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
