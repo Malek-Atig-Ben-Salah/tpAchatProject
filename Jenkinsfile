@@ -3,13 +3,17 @@ pipeline {
     agent any
 
     stages {
-        stage('GIT CHECKOUT') {
+        stage('Display Date') {
             steps {
                 script {
                     def currentDate = currentBuild.getTimestamp()
                     def formattedDate = currentDate.format("yyyy-MM-dd HH:mm:ss")
                     echo "Formatted Date: ${formattedDate}"
                 }
+            }
+        }
+        stage('GIT CHECKOUT') {
+            steps {
                 git branch: 'master', url: 'https://github.com/Malek-Atig-Ben-Salah/tpAchatProject.git'
             }
         }
