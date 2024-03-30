@@ -19,9 +19,10 @@
 		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
 		<sonar.tests>src/test</sonar.tests>
 		<sonar.sources>src/main</sonar.sources>
-		<sonar.java.binaries>path/to/compiled/classes</sonar.java.binaries>
+		<sonar.language>java</sonar.language>
+		<sonar.host.url>http://192.168.33.10:9000/</sonar.host.url>
+		<sonar.java.binaries>src/target</sonar.java.binaries>
 		<sonar.exclusions>**/test/*</sonar.exclusions>
-		<sonar.exclusions>**/*.test</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
