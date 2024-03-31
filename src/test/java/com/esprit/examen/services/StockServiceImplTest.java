@@ -1,52 +1,59 @@
-/*package com.esprit.examen.services;
+package com.esprit.examen.services;
 
-import static org.junit.Assert.*;
-import java.util.List;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import com.esprit.examen.entities.Stock;
+import com.esprit.examen.repositories.StockRepository;
+import com.esprit.examen.services.StockServiceImpl;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 public class StockServiceImplTest {
-	@Autowired
-	IStockService stockService;
-	
-	@Test
-	public void testAddStock() {
-	//	List<Stock> stocks = stockService.retrieveAllStocks();
-	//	int expected=stocks.size();
-		Stock s = new Stock("stock test",10,100);
-		Stock savedStock= stockService.addStock(s);
-		
-	//	assertEquals(expected+1, stockService.retrieveAllStocks().size());
-		assertNotNull(savedStock.getLibelleStock());
-		stockService.deleteStock(savedStock.getIdStock());
-		
-	} 
-	
-	@Test
-	public void testAddStockOptimized() {
 
-		Stock s = new Stock("stock test",10,100);
-		Stock savedStock= stockService.addStock(s);
-		assertNotNull(savedStock.getIdStock());
-		assertSame(10, savedStock.getQte());
-		assertTrue(savedStock.getQteMin()>0);
-		stockService.deleteStock(savedStock.getIdStock());
-		
-	} 
-	
-	@Test
-	public void testDeleteStock() {
-		Stock s = new Stock("stock test",30,60);
-		Stock savedStock= stockService.addStock(s);
-		stockService.deleteStock(savedStock.getIdStock());
-		assertNull(stockService.retrieveStock(savedStock.getIdStock()));
-	}
+    @InjectMocks
+    private StockServiceImpl stockService;
+
+    @Mock
+    private StockRepository stockRepository;
+
+    private Stock stock;
+
+    @BeforeEach
+    void setUp() {
+        stock = new Stock();
+        stock.setIdStock(1L);
+        // Initialisation d'autres propriétés du stock...
+    }
+
+    @Test
+    void retrieveAllStocksTest() {
+        List<Stock> stocks = new ArrayList<>();
+        stocks.add(stock);
+
+        Mockito.when(stockRepository.findAll()).thenReturn(stocks);
+
+        List<Stock> retrievedStocks = stockService.retrieveAllStocks();
+
+        Assertions.assertEquals(stocks.size(), retrievedStocks.size());
+        Assertions.assertEquals(stock, retrievedStocks.get(0));
+    }
+
+    @Test
+    void addStockTest() {
+        Mockito.when(stockRepository.save(Mockito.any(Stock.class))).thenReturn(stock);
+
+        Stock savedStock = stockService.addStock(stock);
+
+        Assertions.assertNotNull(savedStock);
+        Assertions.assertEquals(stock, savedStock);
+    }
 
 }
-*/
