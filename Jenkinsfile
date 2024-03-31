@@ -27,19 +27,5 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-        stage('SONARQUBE ANALYSIS') {
-            steps {
-                withSonarQubeEnv(installationName: 'tpAchatSonar') {
-                    sh 'mvn clean sonar:sonar'
-                }
-            }
-        }
-        stage('QUALITY GATE STATUS') {
-            steps {
-                script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonar'
-                }
-            }
-        }
     }
 }
