@@ -71,4 +71,16 @@ public class CategorieProduitServiceImplTest {
         CategorieProduit categorieProduit = categorieProduitService.retrieveCategorieProduit(1L);
         Assertions.assertEquals(categorieProduit , categorieProduit1);
     }
+ //C moi qui l'a ajouté
+    @Test
+    void deleteCategorieProduitTest(){
+        categorieProduitService.deleteCategorieProduit(1L);
+        Mockito.verify(categorieProduitRepository , Mockito.times(1)).deleteById(1L);
+    }
+    @Test
+    void updateCategorieProduitTest(){
+        Mockito.when(categorieProduitRepository.save(categorieProduit1)).thenReturn(categorieProduit1);
+        CategorieProduit categorieProduit = categorieProduitService.updateCategorieProduit(categorieProduit1);
+        Assertions.assertEquals(categorieProduit , categorieProduit1);
+    }
 }
