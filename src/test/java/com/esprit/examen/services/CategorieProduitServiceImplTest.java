@@ -73,12 +73,12 @@ public class CategorieProduitServiceImplTest {
     }
  //C moi qui l'a ajouté
     @Test
-    void deleteCategorieProduitTest(){
+    void deleteeCategorieProduitTest(){
         categorieProduitService.deleteCategorieProduit(1L);
         Mockito.verify(categorieProduitRepository , Mockito.times(1)).deleteById(1L);
     }
     @Test
-    void updateCategorieProduitTest(){
+    void updateeCategorieProduitTest(){
         Mockito.when(categorieProduitRepository.save(categorieProduit1)).thenReturn(categorieProduit1);
         CategorieProduit categorieProduit = categorieProduitService.updateCategorieProduit(categorieProduit1);
         Assertions.assertEquals(categorieProduit , categorieProduit1);
