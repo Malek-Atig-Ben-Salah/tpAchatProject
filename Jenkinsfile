@@ -30,7 +30,7 @@ pipeline {
         stage('SONARQUBE ANALYSIS') {
             steps {
                 withSonarQubeEnv(installationName: 'tpAchatSonar') {
-                    sh 'mvn clean sonar:sonar'
+                    sh 'mvn clean sonar:sonar -Pcoverage'
                 }
             }
         }
