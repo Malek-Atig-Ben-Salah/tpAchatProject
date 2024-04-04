@@ -25,7 +25,7 @@ pipeline {
         stage('NEXUS') {
             steps {
                 script {
-                    nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: '', type: 'jar']], credentialsId: 'nexus-auth-v1', groupId: 'com.esprit.examen', nexusUrl: '192.168.33.10:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'tpAchatProject-Release', version: '1.0'
+                    nexusArtifactUploader artifacts: [[artifactId: 'tpAchatProject', classifier: '', file: 'target/tpAchatProject-1.0.jar', type: 'jar']], credentialsId: 'nexus-auth-v1', groupId: 'com.esprit.examen', nexusUrl: '192.168.33.10:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'tpAchatProject-Release', version: '1.0'
                 }
             }
         }
