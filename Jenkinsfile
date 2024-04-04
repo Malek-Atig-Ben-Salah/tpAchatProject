@@ -16,6 +16,11 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/Malek-Atig-Ben-Salah/tpAchatProject.git'
             }
         }
+        stage('UNIT TESTS') {
+            steps {
+                sh 'mvn test'
+            }
+        }
         stage('MAVEN BUILD') {
             steps {
                 echo 'java -version'
@@ -27,11 +32,6 @@ pipeline {
                 withSonarQubeEnv(installationName: 'tpAchatSonar') {
                     sh 'mvn clean sonar:sonar'
                 }
-            }
-        }
-        stage('UNIT TESTS') {
-            steps {
-                sh 'mvn test'
             }
         }
         stage('QUALITY GATE STATUS') {
