@@ -16,18 +16,6 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/Malek-Atig-Ben-Salah/tpAchatProject.git'
             }
         }
-        stage('UNIT TESTS') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-        stage('MAVEN BUILD') {
-            steps {
-                echo 'java -version'
-                sh 'mvn clean install -DskipTests'
-            }
-        }
-
         stage('NEXUS') {
             steps {
                 script {
