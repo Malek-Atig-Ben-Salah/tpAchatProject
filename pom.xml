@@ -26,6 +26,13 @@
 		<sonar.exclusions>**/schemas/**,**/config/**</sonar.exclusions>
 		<sonar.coverage.exclusions>**/schemas/**,**/config/**</sonar.coverage.exclusions>
 	</properties>
+	<distributionManagement>
+		<repository>
+			<id>deploymentRepo</id>
+			<name>Nexus Repository</name>
+			<url>http://192.168.33.10:8081/repository/tpAchatProject-Release/</url>
+		</repository>
+	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
