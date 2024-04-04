@@ -21,12 +21,6 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('MAVEN BUILD') {
-            steps {
-                echo 'java -version'
-                sh 'mvn clean install -DskipTests'
-            }
-        }
         stage('SONARQUBE ANALYSIS') {
             steps {
                 withSonarQubeEnv(installationName: 'tpAchatSonar') {
@@ -41,6 +35,12 @@ pipeline {
                 }
             }
         }
+        stage('MAVEN BUILD') {
+            steps {
+                echo 'java -version'
+                sh 'mvn clean install -DskipTests'
+            }
+        }
         stage('NEXUS') {
             steps {
                 script {
@@ -49,7 +49,7 @@ pipeline {
                                     [
                                             artifactId: 'tpAchatProject',
                                             classifier: '',
-                                            file: 'target/',
+                                            file: 'target/tpAchatProject-1.0.jar',
                                             type: 'jar'
                                     ]
                             ],
