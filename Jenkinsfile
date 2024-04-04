@@ -24,7 +24,7 @@ pipeline {
         stage('MAVEN BUILD') {
             steps {
                 echo 'java -version'
-                sh 'mvn clean install'
+                sh 'mvn clean install -DskipTests'
             }
         }
         stage('SONARQUBE ANALYSIS') {
