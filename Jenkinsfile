@@ -41,5 +41,26 @@ pipeline {
                 }
             }
         }
+        stage('NEXUS') {
+            steps {
+                script {
+                    nexusArtifactUploader artifacts:
+                            [
+                                [
+                                        artifactId: 'tpAchatProject',
+                                        classifier: '',
+                                        file: 'target/tpAchatProject.jar',
+                                        type: 'jar']
+                            ],
+                            credentialsId: 'nexus-auth',
+                            groupId: 'com.esprit.examen',
+                            nexusUrl: '192.168.33.10:8081/',
+                            nexusVersion: 'nexus3',
+                            protocol: 'http',
+                            repository: 'tpAchatProject-Release',
+                            version: '1.0'
+                }
+            }
+        }
     }
 }
