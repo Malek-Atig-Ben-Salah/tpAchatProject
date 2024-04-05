@@ -52,11 +52,12 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker build -t admin/TpAchat:latest .'
+
+                sh 'echo "vagrant" | sudo -S docker image build -t TpAchat:latest .'
             }
         }
 
-      
+
 
          stage("Login & Push"){
                      steps{
