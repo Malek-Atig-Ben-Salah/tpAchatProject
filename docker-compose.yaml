@@ -12,6 +12,23 @@ services:
       MYSQL_DATABASE: tpachato
     networks:
       - mysql-phpmyadmin
+
+  tp-achat:
+    depends_on:
+      - db
+    image : malekbensalah/tpachat:latest
+    restart: on-failure
+    ports:
+      - 8089:8089
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url":"jdbc:mysql://db:3306/tpachato?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+        "spring.datasource.username":"root",
+        "spring.datasource.password":"password",
+        "spring.jpa.properties.hibernate.dialect":"org.hibernate.dialect.MySQL5InnoDBDialect",
+        "spring.jpa.hibernate.ddl-auto":"update"
+      }'
+
   phpmyadmin:
     depends_on:
       - db

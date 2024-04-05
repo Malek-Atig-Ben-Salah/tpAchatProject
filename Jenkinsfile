@@ -83,5 +83,12 @@ pipeline {
                 }
             }
         }
+        stage('DOCKER COMPOSE') {
+            steps {
+                script{
+                    sh 'echo "vagrant" | sudo -S docker compose up'
+                }
+            }
+        }
     }
 }
