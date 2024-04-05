@@ -72,5 +72,16 @@ pipeline {
                 }
             }
         }
+        stage("PUSH THE IMAGE TO DOCKER HUB"){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'docker_hub', variable: 'docker_hub')]) {
+                        sh 'docker login -u malekbensalah -p ${docker_hub}'
+                        sh 'docker image push malekbensalah/tpachat:v1.$BUILD_ID'
+                        sh 'docker image push malekbensalah/tpachat:latest'
+                    }
+                }
+            }
+        }
     }
 }
