@@ -39,12 +39,12 @@ pipeline {
                              type: 'jar'
                              ]
                           ],
-                          credentialsId: 'nexus-auth-v1',
+                          credentialsId: 'nexuscr',
                           groupId: 'com.esprit.examen',
                           nexusUrl: '172.20.10.3:8081',
                           nexusVersion: 'nexus3',
                           protocol: 'http',
-                          repository: 'maven-snapshots-emna',
+                          repository: 'nexus_tpachat',
                           version: '1.0'
                           }
                    }
