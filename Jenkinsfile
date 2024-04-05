@@ -1,9 +1,7 @@
 pipeline {
 
     agent any
-    environment {
-        DOCKERHUB_CREDENTIALS = credentialsId('tpAchat_Dockerhub')
-    }
+
     stages {
         stage('Display Date') {
             steps {
@@ -58,17 +56,19 @@ pipeline {
             }
         }
 
-        stage('Login & Push') {
-           steps {
-                script{
-                    withCredentials([usernamePassword(credentialsId: 'tpAchat_Dockerhub', passwordVariable: 'tpAchat_DockerhubPassword', usernameVariable: 'tpAchat_DockerhubUser')]) {
-                           sh "docker login -u ${env.tpAchat_DockerhubUser} -p ${env.tpAchat_DockerhubPassword}"
-                           sh 'docker push admin/TpAchat:latest'
+      
 
-                    }
-                }
-           }
-         }
+         stage("Login & Push"){
+                     steps{
+                         script{
+                             withCredentials([string(credentialsId: 'tpAchat_Dockerhub', variable: 'tpAchat_Dockerhub')]) {
+                                 sh 'echo "vagrant" | sudo -S docker login -u admin -p ${tpAchat_Dockerhub}'
+                                 sh 'echo "vagrant" | sudo -S docker image push admin/TpAchat:latest'
+
+                             }
+                         }
+                     }
+                 }
 
 
 
