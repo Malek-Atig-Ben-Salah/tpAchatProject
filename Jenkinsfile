@@ -41,7 +41,7 @@ pipeline {
                           ],
                           credentialsId: 'nexuscr',
                           groupId: 'com.esprit.examen',
-                          nexusUrl: '172.20.10.3:8081',
+                          nexusUrl: '192.168.1.9:8081',
                           nexusVersion: 'nexus3',
                           protocol: 'http',
                           repository: 'nexus_tpachat',

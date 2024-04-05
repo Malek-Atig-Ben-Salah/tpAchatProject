@@ -28,7 +28,7 @@
 		<repository>
 			<id>deploymentRepo</id>
 			<name>Nexus Repository</name>
-			<url>http://172.20.10.3:8081/repository/nexus_tpachat/</url>
+			<url>http://192.168.1.9:8081/repository/nexus_tpachat/</url>
 		</repository>
 	</distributionManagement>
 	<dependencies>
