@@ -28,7 +28,7 @@
 		<repository>
 			<id>deploymentRepo</id>
 			<name>Nexus Repository</name>
-			<url>http://172.20.10.11:8081/:8081/repository/tpAchatProject-Release/</url>
+			<url>http://172.20.10.11:8081/repository/Maven_Tp_Achat/</url>
 		</repository>
 	</distributionManagement>
 
