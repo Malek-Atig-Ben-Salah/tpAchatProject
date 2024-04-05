@@ -87,7 +87,6 @@ pipeline {
             steps {
                 script{
                     sh 'echo "vagrant" | sudo -S docker compose up'
-                    sh 'echo "application up "'
                 }
             }
         }
