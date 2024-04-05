@@ -38,7 +38,7 @@ pipeline {
                             type: 'jar'
                         ]
                     ],
-                    credentialsId: 'nexus-auth-v1',
+                    credentialsId: 'nexus_cred',
                     groupId: 'com.esprit.examen',
                     nexusUrl: 'http://172.20.10.11:8081',
                     nexusVersion: 'nexus3',
