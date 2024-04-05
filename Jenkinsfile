@@ -55,20 +55,19 @@ pipeline {
          steps {
            sh 'docker build -t admin/TpAchat:latest .'
          }
-
     }
-    stage('Login') {
-         steps {
-         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-        }
- }
 
-      stage('Push') {
-           steps {
-           sh 'docker push admin/TpAchat:latest'
+stage('Login & Push') {
+   steps {
+        script{
+            withCredentials([usernamePassword(credentialsId: 'TpAchat-Docker', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                   sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                   sh 'docker push admin/TpAchat:latest'
+
             }
-     }
-
+        }
+   }
+ }
 
 
 
