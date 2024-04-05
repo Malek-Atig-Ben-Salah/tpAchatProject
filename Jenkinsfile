@@ -27,5 +27,28 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+        stage('NEXUS') {
+            steps {
+                   script {
+                          nexusArtifactUploader artifacts:
+                          [
+                            [
+                             artifactId: 'tpAchatProject',
+                             classifier: '',
+                             file: 'target/tpAchatProject-1.0.jar',
+                             type: 'jar'
+                             ]
+                          ],
+                          credentialsId: 'nexus-auth-v1',
+                          groupId: 'com.esprit.examen',
+                          nexusUrl: '172.20.10.3:8081',
+                          nexusVersion: 'nexus3',
+                          protocol: 'http',
+                          repository: 'maven-snapshots-emna',
+                          version: '1.0'
+                          }
+                   }
+            }
+
     }
 }
