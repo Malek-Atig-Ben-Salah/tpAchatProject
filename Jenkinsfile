@@ -60,8 +60,8 @@ pipeline {
 stage('Login & Push') {
    steps {
         script{
-            withCredentials([usernamePassword(credentialsId: 'TpAchat-Docker', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-                   sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+            withCredentials([usernamePassword(credentialsId: 'TpAchat-Docker', passwordVariable: 'TpAchat-DockerPassword', usernameVariable: 'TpAchat-DockerUser')]) {
+                   sh "docker login -u ${env.TpAchat-DockerUser} -p ${env.TpAchat-DockerPassword}"
                    sh 'docker push admin/TpAchat:latest'
 
             }
