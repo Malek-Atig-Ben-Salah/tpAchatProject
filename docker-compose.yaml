@@ -1,4 +1,4 @@
-version : '2'
+version: '2'
 services:
   db:
     image: mysql:latest
@@ -16,7 +16,7 @@ services:
   tp-achat:
     depends_on:
       - db
-    image : malekbensalah/tpachat:latest
+    image: malekbensalah/tpachat:latest
     restart: on-failure
     ports:
       - 8089:8089
