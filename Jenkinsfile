@@ -91,5 +91,12 @@ pipeline {
                 }
             }
         }
+        stage('GRAFANA') {
+            steps {
+                script{
+                    sh 'echo "application up "'
+                }
+            }
+        }
     }
 }
