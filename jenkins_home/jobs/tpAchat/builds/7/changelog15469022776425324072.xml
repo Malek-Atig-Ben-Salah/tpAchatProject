@@ -1,0 +1,21 @@
+commit 9a68f105397d43a8ba13b0dbcd0cf7d0f0879dbc
+tree 45cf98e88c2b46bac102c4f3cd54a86710a152b0
+parent 899937150dbac7321b6c142712f740d51a21c54f
+author Malek-Atig-Ben-Salah <malek.atigbensalah@esprit.tn> 2024-04-05 16:47:47 +0100
+committer Malek-Atig-Ben-Salah <malek.atigbensalah@esprit.tn> 2024-04-05 16:47:47 +0100
+
+    add docker compose for running project in container
+
+
+:100644 100644 989046fb0e994ffab17b7c094641417ef9c85ff3 9386e8f2a135c480843c58d329e16bf7231e1adc M	Jenkinsfile
+:100644 100644 de6d1e3ff687fcb8b9e841d67e920cdba7340364 a1b2a5554953cedd03ee17be7ed4a8a91d3f62bb M	docker-compose.yaml
+commit 899937150dbac7321b6c142712f740d51a21c54f
+tree d3e41289930dbb5d4d504a94867fdaff3032b388
+parent d0943f18a41d902f5fd0700ef8e525f0ecf89725
+author Malek-Atig-Ben-Salah <malek.atigbensalah@esprit.tn> 2024-04-05 15:38:40 +0100
+committer Malek-Atig-Ben-Salah <malek.atigbensalah@esprit.tn> 2024-04-05 15:38:40 +0100
+
+    add docker compose for running project in container
+
+
+:100644 100644 0491df4ebf53813346b2d7c7ec8617739c57908b de6d1e3ff687fcb8b9e841d67e920cdba7340364 M	docker-compose.yaml
