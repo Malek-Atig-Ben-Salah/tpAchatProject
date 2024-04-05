@@ -43,7 +43,7 @@ pipeline {
                     nexusUrl: '172.20.10.11:8081',
                     nexusVersion: 'nexus3',
                     protocol: 'http',
-                    repository: 'Maven_Tp_Achat',
+                    repository: 'TP_Achat_Nexus',
                     version: '1.0'
                 }
             }
