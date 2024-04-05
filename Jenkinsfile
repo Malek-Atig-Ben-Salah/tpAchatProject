@@ -40,10 +40,10 @@ pipeline {
                     ],
                     credentialsId: 'nexus_cred',
                     groupId: 'com.esprit.examen',
-                    nexusUrl: 'http://172.20.10.11:8081',
+                    nexusUrl: '172.20.10.11:8081',
                     nexusVersion: 'nexus3',
                     protocol: 'http',
-                    repository: 'tpAchatProject-Release',
+                    repository: 'Maven_Tp_Achat',
                     version: '1.0'
                 }
             }
