@@ -1,7 +1,9 @@
 pipeline {
 
     agent any
-
+    environment {
+        DOCKERHUB_CREDENTIALS = credentialsId('tpAchat_Dockerhub')
+    }
     stages {
         stage('Display Date') {
             steps {
@@ -49,6 +51,30 @@ pipeline {
                           }
                    }
             }
+
+        stage('Build') {
+            steps {
+                sh 'docker build -t admin/TpAchat:latest .'
+            }
+        }
+
+        stage('Login') {
+           steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+           }
+         }
+        stage('Push') {
+           steps {
+                sh 'docker push admin/TpAchat:latest'
+           }
+        }
+
+
+
+
+
+
+
 
     }
 }
