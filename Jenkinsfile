@@ -66,9 +66,9 @@ pipeline {
         stage('BUILDING IMAGE') {
             steps {
                 script{
-                    sh 'sudo docker image build -t $JOB_NAME:v1.$BUILD_ID .'
-                    sh 'sudo docker image tag $JOB_NAME:v1.$BUILD_ID malekbensalah/$JOB_NAME:v1.$BUILD_ID'
-                    sh 'sudo docker image tag $JOB_NAME:v1.$BUILD_ID malekbensalah/$JOB_NAME:latest'
+                    sh 'echo "vagrant" | sudo -S docker image build -t $JOB_NAME:v1.$BUILD_ID .'
+                    sh 'echo "vagrant" | sudo -S docker image tag $JOB_NAME:v1.$BUILD_ID malekbensalah/$JOB_NAME:v1.$BUILD_ID'
+                    sh 'echo "vagrant" | sudo -S docker image tag $JOB_NAME:v1.$BUILD_ID malekbensalah/$JOB_NAME:latest'
                 }
             }
         }
