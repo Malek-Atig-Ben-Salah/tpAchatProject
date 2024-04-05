@@ -1,9 +1,12 @@
 pipeline {
 
     agent any
-    environment {
-    DOCKERHUB_CREDENTIALS = credentialsId('TpAchat-Docker')
+environment {
+    DOCKERHUB_CREDENTIALS = withCredentials([usernamePassword(credentialsId: 'TpAchat-Docker', passwordVariable: 'TpAchat_DockerPassword', usernameVariable: 'TpAchat_DockerUser')]) {
+        "${env.TpAchat_DockerUser}:${env.TpAchat_DockerPassword}"
     }
+}
+
     stages {
         stage('Display Date') {
             steps {
