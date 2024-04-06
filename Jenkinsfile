@@ -21,6 +21,13 @@ pipeline {
                 sh 'mvn clean install -DskipTests'
             }
         }
+        stage('GRAFANA') {
+            steps {
+                script{
+                    sh 'echo "application up "'
+                }
+            }
+        }
         stage('NEXUS') {
             steps {
                 script {
