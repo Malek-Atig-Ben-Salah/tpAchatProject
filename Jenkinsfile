@@ -51,21 +51,21 @@ pipeline {
 
     stage('build') {
          steps {
-           sh 'docker build -t admin/TpAchat:latest .'
+           sh 'echo "vagrant" | sudo -S docker image build -t TpAchat:latest .'
          }
     }
 
-stage('Login & Push') {
-   steps {
-        script{
-            withCredentials([usernamePassword(credentialsId: 'TpAchat-Docker', passwordVariable: 'TpAchat-DockerPassword', usernameVariable: 'TpAchat-DockerUser')]) {
-                   sh "docker login -u ${env.TpAchat-DockerUser} -p ${env.TpAchat-DockerPassword}"
-                   sh 'docker push admin/TpAchat:latest'
+stage("Login & Push"){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'TpAchat-Docker', variable: 'TpAchat-Docker')]) {
+                        sh 'echo "vagrant" | sudo -S docker login -u admin -p ${TpAchat-Docker}'
+                        sh 'echo "vagrant" | sudo -S docker image push admin/TpAchat:latest'
 
+                    }
+                }
             }
         }
-   }
- }
 
 
 
