@@ -81,6 +81,7 @@ pipeline {
             stage('Docker compose') {
                         steps {
                             script{
+                                sh 'docker-compose restart'
                                 sh 'docker compose up -d'
                             }
                         }
