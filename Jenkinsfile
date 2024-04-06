@@ -38,7 +38,7 @@ pipeline {
                             nexusUrl: 'http://172.20.0.3:8081',
                             nexusVersion: 'nexus3',
                             protocol: 'http',
-                            repository: 'tpAchatProject-Release',
+                            repository: 'maven-releases',
                             version: '1.0'
                 }
             }
