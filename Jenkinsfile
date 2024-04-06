@@ -50,11 +50,15 @@ pipeline {
                    }
             }
 
-        stage('Build') {
-            steps {
-                 sh 'echo "vagrant" | sudo -S docker build -t admin/TpAchat .'
-            }
-        }
+
+              stage('Build') {
+                  steps {
+                      script {
+                          // Exécution de la construction Docker sans utiliser sudo
+                          sh 'docker build -t admin/TpAchat .'
+                      }
+                  }
+
 
 
 
