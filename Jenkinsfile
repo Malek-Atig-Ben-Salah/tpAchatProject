@@ -62,20 +62,20 @@ pipeline {
 
 
 
-             stage('Docker Push') {
-                   agent any
-                   steps {
-                     withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUser')]) {
-                       sh "docker login -u ${env.dockerUser} -p ${env.dockerPassword}"
-                       sh 'docker image push emnaarfaoui/tpachat:latest'
-                     }
-                   }
-                 }
 
 
 
+            stage("PUSH THE IMAGE TO DOCKER HUB"){
+                        steps{
+                            script{
+                                withCredentials([string(credentialsId: 'docker', variable: 'docker')]) {
+                                    sh 'docker login -u emnaarfaoui -p ${docker}'
+                                    sh 'docker image push emnaarfaoui/tpachat:latest'
 
-
+                                }
+                            }
+                        }
+                    }
 
 
 
