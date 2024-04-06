@@ -70,9 +70,18 @@ stage("PUSH IMAGE DONE ! "){
             }
         }
 
+stage('Now DOCKER COMPOSE') {
+            steps {
+                script{
+                    sh 'docker compose up -d'
+                }
+            }
+        }
+
+
+
+
 
 
     }
-
-
 }
