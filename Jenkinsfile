@@ -53,16 +53,16 @@ stage('Build image yes') {
     steps {
         script {
             // Exécution de la construction Docker sans utiliser sudo
-            sh 'docker build -t admin/tpachat .'
+            sh 'docker build -t bachouel/tpachat .'
         }
     }
 }
-stage("Login & Push image ") {
+stage("Login & Push image") {
     steps {
         script {
             withCredentials([string(credentialsId: 'tpachat_doc', variable: 'tpachat_doc')]) {
-                sh 'docker login -u admin -p ${tpachat_doc}'
-                sh 'docker image push admin/tpachat:latest'
+                sh 'docker login -u bachouel -p ${tpachat_doc}'
+                sh 'docker image push bachouel/tpachat:latest'
             }
         }
     }
