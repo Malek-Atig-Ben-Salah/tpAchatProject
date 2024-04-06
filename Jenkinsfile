@@ -92,14 +92,7 @@ pipeline {
                   }
             }
 
-            stage('Actualisation du tableau de bord Grafana') {
-                steps {
-                    script {
-                        // Exemple : Actualisation du tableau de bord Grafana avec des informations sur le dernier build
-                        sh 'curl -X POST -H "Content-Type: application/json" -d \'{"build_status": "success", "build_number": "123", "author": "John Doe"}\' http://grafana-server/api/dashboards/update'
-                    }
-                }
-            }
+
 
 
     }
