@@ -1,9 +1,6 @@
 pipeline {
-
     agent any
-
     stages {
-
         stage('GIT CHECKOUT') {
             steps {
                 git branch: 'brancheEya', url: 'https://github.com/Malek-Atig-Ben-Salah/tpAchatProject.git'
@@ -14,7 +11,6 @@ pipeline {
                 sh 'mvn test'
             }
         }
-
         stage('MAVEN BUILD') {
             steps {
                 echo 'java -version'
@@ -24,26 +20,41 @@ pipeline {
         stage('NEXUS') {
             steps {
                 script {
-                    nexusArtifactUploader artifacts:
-                            [
-                                    [
-                                            artifactId: 'tpAchatProject',
-                                            classifier: '',
-                                            file: 'target/tpAchatProject-1.0.jar',
-                                            type: 'jar'
-                                    ]
-                            ],
-                            credentialsId: 'nexus-auth-v1',
-                            groupId: 'com.esprit.examen',
-                            nexusUrl: 'http://172.20.0.3:8081',
-                            nexusVersion: 'nexus3',
-                            protocol: 'http',
-                            repository: 'maven-releases',
-                            version: '1.0'
+                    def nexusUrl = 'http://172.20.0.3:8081'
+                    def credentialsId = 'nexus-auth-v1'
+                    def groupId = 'com.esprit.examen'
+                    def repository = 'maven-releases'
+                    def version = '1.0'
+                    def artifactId = 'tpAchatProject'
+                    def classifier = ''
+                    def type = 'jar'
+                    def file = 'target/tpAchatProject-1.0.jar'
+
+                    echo "Nexus URL: ${nexusUrl}"
+                    echo "Credentials ID: ${credentialsId}"
+                    echo "Group ID: ${groupId}"
+                    echo "Repository: ${repository}"
+                    echo "Version: ${version}"
+                    echo "Artifact ID: ${artifactId}"
+                    echo "Classifier: ${classifier}"
+                    echo "Type: ${type}"
+                    echo "File: ${file}"
+
+                    nexusArtifactUploader artifacts: [[
+                        artifactId: artifactId,
+                        classifier: classifier,
+                        file: file,
+                        type: type
+                    ]],
+                    credentialsId: credentialsId,
+                    groupId: groupId,
+                    nexusUrl: nexusUrl,
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    repository: repository,
+                    version: version
                 }
             }
         }
-
-
     }
 }
