@@ -49,18 +49,20 @@ pipeline {
             }
         }
 
-stage('Build') {
-    steps {
-        sh 'sudo docker image build -t TpAchat:latest .'
-    }
-}
-
-stage("Login & Push") {
+stage('Build image yes') {
     steps {
         script {
-            withCredentials([string(credentialsId: 'TpAchat-Docker', variable: 'TpAchat-Docker')]) {
-                sh 'sudo docker login -u admin -p ${TpAchat-Docker}'
-                sh 'sudo docker image push admin/TpAchat:latest'
+            // Exécution de la construction Docker sans utiliser sudo
+            sh 'docker build -t admin/tpachat .'
+        }
+    }
+}
+stage("Login & Push image ") {
+    steps {
+        script {
+            withCredentials([string(credentialsId: 'tpachat-Docker', variable: 'tpachat-Docker')]) {
+                sh 'docker login -u admin -p ${tpachat-Docker}'
+                sh 'docker image push admin/tpachat:latest'
             }
         }
     }
