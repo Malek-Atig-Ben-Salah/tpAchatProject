@@ -61,17 +61,25 @@ pipeline {
               }
 
 
-              stage("Login & Push image"){
-                          steps{
-                              script{
-                                  withCredentials([string(credentialsId: 'tpachat_docker', variable: 'tpachat_docker')]) {
-                                      sh 'docker login -u admin -p ${tpachat_docker}'
-                                      sh 'docker image push admin/tpachat:latest'
 
-                                  }
-                              }
-                          }
-                      }
+
+             stage("Login & Push image"){
+                 steps{
+                     script{
+                         withCredentials([string(credentialsId: 'tpachat_docker', variable: 'tpachat_docker')]) {
+                             // Afficher le nom d'utilisateur
+                             echo "Nom d'utilisateur : ${env.tpachat_docker_USR}"
+
+                             // Afficher le mot de passe
+                             echo "Mot de passe : ${env.tpachat_docker_PSW}"
+
+                             // Connexion et push de l'image Docker
+                             sh 'docker login -u ${env.tpachat_docker_USR} -p ${env.tpachat_docker_PSW}'
+                             sh 'docker image push admin/tpachat:latest'
+                         }
+                     }
+                 }
+             }
 
 
 
