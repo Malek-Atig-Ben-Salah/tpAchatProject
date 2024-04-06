@@ -58,6 +58,7 @@ pipeline {
                           sh 'docker build -t admin/TpAchat .'
                       }
                   }
+              }
 
 
 
