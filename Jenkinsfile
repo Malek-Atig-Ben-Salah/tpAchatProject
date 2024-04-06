@@ -86,6 +86,11 @@ pipeline {
                             }
                         }
                     }
+            stage('Grafana') {
+                  steps {
+                        echo 'Hello grafana'
+                  }
+            }
 
 
 
