@@ -6,7 +6,7 @@ pipeline {
 
         stage('GIT CHECKOUT') {
             steps {
-                git branch: 'master', url: 'https://github.com/Malek-Atig-Ben-Salah/tpAchatProject.git'
+                git branch: 'brancheEya', url: 'https://github.com/Malek-Atig-Ben-Salah/tpAchatProject.git'
             }
         }
         stage('UNIT TESTS') {
