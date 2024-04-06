@@ -52,8 +52,7 @@ pipeline {
 
         stage('Build') {
             steps {
-
-                sh 'sudo docker image build -t TpAchat:latest .'
+                 sh 'echo "vagrant" | sudo -S docker image build -t admin/TpAchat:latest .'
             }
         }
 
