@@ -1,4 +1,4 @@
-FROM maven AS build
+FROM maven as build
 WORKDIR /Application
 COPY . .
 RUN mvn install -DskipTests
