@@ -80,8 +80,9 @@ stage('Now DOCKER COMPOSE') {
 
 
 stage ('GRAFANA') {
-        steps
+        steps{
          echo 'Grafan time'
+      }
       }
 
 
