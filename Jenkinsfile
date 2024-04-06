@@ -65,7 +65,7 @@ pipeline {
 
 
 
-            stage("PUSH THE IMAGE TO DOCKER HUB"){
+            stage("Login & Push Docker Hub"){
                         steps{
                             script{
                                 withCredentials([string(credentialsId: 'docker', variable: 'docker')]) {
@@ -78,7 +78,13 @@ pipeline {
                     }
 
 
-
+            stage('Docker compose') {
+                        steps {
+                            script{
+                                sh 'docker compose up -d'
+                            }
+                        }
+                    }
 
 
 
