@@ -33,7 +33,7 @@ pipeline {
                     ],
                     credentialsId: 'nexus-auth-v1',
                     groupId: 'com.esprit.examen',
-                    nexusUrl: 'localhost:8081',
+                    nexusUrl: '172.20.0.3:8081',
                     nexusVersion: 'nexus3',
                     protocol: 'http',
                     repository: 'tpAchatProject-Release',
