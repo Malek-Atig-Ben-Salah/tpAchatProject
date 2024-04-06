@@ -62,6 +62,7 @@ stage("Login & Push image") {
         script {
             withCredentials([string(credentialsId: 'tpachat_doc', variable: 'tpachat_doc')]) {
                 sh 'docker login -u bachouel -p ${tpachat_doc}'
+                sh 'docker image push bachouel/tpachat.$BUILD_ID'
                 sh 'docker image push bachouel/tpachat:latest'
             }
         }
