@@ -60,8 +60,8 @@ stage('Build image yes') {
 stage("Login & Push image ") {
     steps {
         script {
-            withCredentials([string(credentialsId: 'tpachat-Docker', variable: 'tpachat-Docker')]) {
-                sh 'docker login -u admin -p ${tpachat-Docker}'
+            withCredentials([string(credentialsId: 'tpachat_doc', variable: 'tpachat_doc')]) {
+                sh 'docker login -u admin -p ${tpachat_doc}'
                 sh 'docker image push admin/tpachat:latest'
             }
         }
