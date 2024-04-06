@@ -57,18 +57,18 @@ stage('Build image yes') {
         }
     }
 }
-stage("Login & Push image") {
-    steps {
-        script {
-            withCredentials([string(credentialsId: 'tpachat_doc', variable: 'tpachat_doc')]) {
-                sh 'docker login -u bachouel -p ${tpachat_doc}'
-                sh 'docker image push bachouel/tpachat.$BUILD_ID'
-                sh 'docker image push bachouel/tpachat:latest'
+
+stage("PUSH IMAGE DONE ! "){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'tpachadocker', variable: 'tpachadocker')]) {
+                        sh 'docker login -u bachouel -p ${tpachadocker}'
+                        sh 'docker image push bachouel/tpachat:latest'
+
+                    }
+                }
             }
         }
-    }
-}
-
 
 
 
