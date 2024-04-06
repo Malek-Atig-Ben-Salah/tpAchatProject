@@ -52,23 +52,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                 sh 'echo "vagrant" | sudo -S docker image build -t admin/TpAchat:latest .'
+                 sh 'echo "vagrant" | sudo -S docker build -t admin/TpAchat .'
             }
         }
 
 
 
-         stage("Login & Push"){
-                     steps{
-                         script{
-                             withCredentials([string(credentialsId: 'tpAchat_Dockerhub', variable: 'tpAchat_Dockerhub')]) {
-                                 sh 'sudo docker login -u admin -p ${tpAchat_Dockerhub}'
-                                 sh 'sudo docker image push admin/TpAchat:latest'
 
-                             }
-                         }
-                     }
-                 }
 
 
 
