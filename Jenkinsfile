@@ -55,7 +55,7 @@ pipeline {
                   steps {
                       script {
                           // Exécution de la construction Docker sans utiliser sudo
-                          sh 'docker build -t admin/TpAchat .'
+                          sh 'docker build -t admin/tpachat .'
                       }
                   }
               }
