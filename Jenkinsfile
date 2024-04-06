@@ -49,23 +49,22 @@ pipeline {
             }
         }
 
-    stage('build') {
-         steps {
-           sh 'echo "vagrant" | sudo -S docker image build -t TpAchat:latest .'
-         }
+stage('Build') {
+    steps {
+        sh 'sudo docker image build -t TpAchat:latest .'
     }
+}
 
-stage("Login & Push"){
-            steps{
-                script{
-                    withCredentials([string(credentialsId: 'TpAchat-Docker', variable: 'TpAchat-Docker')]) {
-                        sh 'echo "vagrant" | sudo -S docker login -u admin -p ${TpAchat-Docker}'
-                        sh 'echo "vagrant" | sudo -S docker image push admin/TpAchat:latest'
-
-                    }
-                }
+stage("Login & Push") {
+    steps {
+        script {
+            withCredentials([string(credentialsId: 'TpAchat-Docker', variable: 'TpAchat-Docker')]) {
+                sh 'sudo docker login -u admin -p ${TpAchat-Docker}'
+                sh 'sudo docker image push admin/TpAchat:latest'
             }
         }
+    }
+}
 
 
 
