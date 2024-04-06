@@ -88,7 +88,7 @@
 	<repository>
 		<id>deploymentRepo</id>
 		<name>Nexus Repository</name>
-		<url>http://172.20.0.3:8081/repository/maven-releases/</url>
+		<url>http://localhost:8081/repository/TpAchat/</url>
 	</repository>
 </distributionManagement>
 	<build>
