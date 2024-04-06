@@ -55,7 +55,7 @@ pipeline {
                   steps {
                       script {
                           // Exécution de la construction Docker sans utiliser sudo
-                          sh 'docker build -t admin/tpachat:latest .'
+                          sh 'docker build -t emnaarfaoui/tpachat:latest .'
                       }
                   }
               }
@@ -75,7 +75,7 @@ pipeline {
 
                              // Connexion et push de l'image Docker
                              sh 'docker login -u ${env.tpachat_docker_USR} -p ${env.tpachat_docker_PSW}'
-                             sh 'docker image push admin/tpachat:latest'
+                             sh 'docker image push emnaarfaoui/tpachat:latest'
                          }
                      }
                  }
